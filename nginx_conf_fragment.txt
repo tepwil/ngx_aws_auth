@@ -10,6 +10,9 @@
 
 			proxy_set_header Authorization $s3_auth_token;
 			proxy_set_header x-amz-date $aws_date;
+
+			# Limit access to GET and HEAD requests only
+			limit_except GET { deny  all; }
         }
 
         # This is an example that does not use the server root for the proxy root
@@ -24,6 +27,9 @@
 
 			proxy_set_header Authorization $s3_auth_token;
 			proxy_set_header x-amz-date $aws_date;
+
+			# Limit access to GET and HEAD requests only
+			limit_except GET { deny  all; }
         }
 
 
